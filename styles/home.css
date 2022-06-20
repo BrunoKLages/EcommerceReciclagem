@@ -1,0 +1,101 @@
+#page-home{                                                         /*id é referenciado com "#" */
+    height: 100vh; 
+    background: url('../assets/home-background.svg') no-repeat;    /*no-repeat = carrega a url somente uma vez*/
+    background-position: 35vw bottom;                               /*coloca imagem no bottom da tela*/
+}
+
+#page-home .content{
+    width: 90%;
+    max-width: 1100px;
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#page-home header{
+    margin-top: 40px;
+}
+
+
+#page-home header a{
+    display: flex;
+    color: var(--title-color);
+    font-weight: 700;
+}
+
+#page-home header a span{
+    margin-right: 16px;
+    display: flex;
+    background-image: url('../assets/log-in.svg');
+    width: 20px;
+    height: 20px;
+}
+
+#page-home main{
+    max-width: 560px;
+    flex: 1;                    /* ocupa todo o espaço disponível da div*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#page-home main h2{
+    font-size: 54px;
+}
+
+#page-home main p{
+    font-size: 24px;
+    line-height: 38px;          /*correspondente a altura da linha*/
+    margin-top: 24px;
+}
+
+#page-home main a{
+    width: 100%;
+    max-width: 360px;
+    height: 72px;
+    
+    border-radius: 8px;                /*arredondamento das bordas*/
+    
+    display: flex;
+    align-items: center;
+
+    margin-top: 40px;
+    background: var(--primary-color);
+
+    transition: 400ms;
+}
+
+#page-home main a:hover{                /* quando mouse estiver sobre */
+    background-color: #2fb86e;
+}
+
+#page-home main a span{
+    width: 72px;
+    height: 72px;
+
+    border-top-left-radius: 8px;        /*arrendondar bordas da esquerda*/
+    border-bottom-left-radius: 8px;
+
+    background-color: rgba(0,0,0,0.08);  /*a = transparencia*/
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#page-home main a span:after{           /*cria pseudoelemento do html, criado pelo css*/
+    content: "";
+    background-image: url('../assets/search.svg');
+
+    width: 20px;
+    height: 20px;
+}
+
+#page-home main a strong{
+    flex: 1;
+    color: white;
+    text-align: center;
+}

@@ -4,12 +4,12 @@
 }
 
 *{                                      /*geral*/
-    margin: 0;
+    margin: 0;                           /*zera margin e padding em todos as div's*/
     padding: 0;
 }
 
 html{
-    font-family: Roboto, sans-serif;   /*  fonte para todo doc*/
+    font-family: Roboto, sans-serif;    /*fonte para todo doc*/
 }
 
 body{
@@ -18,11 +18,11 @@ body{
 }
 
 a{
-    text-decoration: none;
+    text-decoration: none;              /*tira todos os underlines automáticos de todos os links*/
 }
 
 h1,h2,h3,h4,h5,h6{
-    font-family: Ubuntu, sans-serif;
+    font-family: Ubuntu, sans-serif;       /*sobreescreve fonte padrão*/
     color: var(--title-color);
 }
 
@@ -32,10 +32,10 @@ header{
     justify-content: space-between;
 }
 
-#page-home{
-    height: 100vh;
-    background: url('../assets/home-background.svg') no-repeat;
-    background-position: 35vw bottom;
+#page-home{                                                         /*id é referenciado com "#" */
+    height: 100vh; 
+    background: url('../assets/home-background.svg') no-repeat;    /*no-repeat = carrega a url somente uma vez*/
+    background-position: 35vw bottom;                               /*coloca imagem no bottom da tela*/
 }
 
 #page-home .content{
@@ -82,7 +82,7 @@ header{
 
 #page-home main p{
     font-size: 24px;
-    line-height: 38px;
+    line-height: 38px;          /*correspondente a altura da linha*/
     margin-top: 24px;
 }
 
@@ -91,7 +91,7 @@ header{
     max-width: 360px;
     height: 72px;
     
-    border-radius: 8px;
+    border-radius: 8px;                /*arredondamento das bordas*/
     
     display: flex;
     align-items: center;
@@ -110,7 +110,7 @@ header{
     width: 72px;
     height: 72px;
 
-    border-top-left-radius: 8px;        /*arrendondar bordas*/
+    border-top-left-radius: 8px;        /*arrendondar bordas da esquerda*/
     border-bottom-left-radius: 8px;
 
     background-color: rgba(0,0,0,0.08);  /*a = transparencia*/
@@ -120,7 +120,7 @@ header{
     justify-content: center;
 }
 
-#page-home main a span:after{
+#page-home main a span:after{           /*cria pseudoelemento do html, criado pelo css*/
     content: "";
     background-image: url('../assets/search.svg');
 
@@ -152,7 +152,7 @@ header{
         position: absolute;
         bottom: 48px;
 
-        left: 50%;                      /* metodo para centralizar*/
+        left: 50%;                      /* metodo para centralizar absolute*/
         transform: translateX(-50%);
     }
 }

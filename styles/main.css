@@ -6,6 +6,7 @@
 *{                                      /*todos os elementos, seletores*/
     margin: 0;                           /*zera margin e padding em todos as div's*/
     padding: 0;
+    box-sizing: border-box;  /*garante o comportamento intuitivo da box*/
 }
 
 html{
@@ -30,6 +31,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 40px;
 }
 
 

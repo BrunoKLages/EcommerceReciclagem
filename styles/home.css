@@ -15,10 +15,6 @@
     flex-direction: column;
 }
 
-#page-home header{
-    margin-top: 40px;
-}
-
 
 #page-home header a{
     display: flex;

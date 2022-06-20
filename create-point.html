@@ -1,0 +1,72 @@
+<!DOCTYPE html>                 <!-- ! = atalho para esqueleto do html  | Doctype indica que arquivo é html-->
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar um ponto de coleta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">  <!--  fontes do google-->
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/create-point.css">
+    <link rel="stylesheet" href="/styles/responsive.css">
+</head>
+
+<body>
+    <div id="page-create-point">                    <!-- Facilita identificação da página, útil no css-->
+        <header>
+            <img src="/assets/logo.svg" alt="Logomarca">
+            <a href="#">                           <!-- a = link clicável-->
+                <span></span>                               <!-- span = container genérico em linha-->
+                Voltar para home
+            </a>
+        </header>
+
+        <form action="">
+
+            <h1>Cadastro do ponto de coleta</h1>
+        
+            <fieldset> <!-- cointainer coleção de campos-->
+                <legend> <!-- container legenda-->
+                    <h2>Dados da entidade</h2>
+                </legend>
+
+                <div class="field"> <!--digitar .field emmet cria pa nois-->
+                        <label for="">Nome da entidade</label>
+                        <input type="text" name="name">
+                </div>
+
+                <div class="field-group">
+                    <div class="field">
+                        <label for="adress">Endereço</label>  <!--label+input cria ambos em linha, label representa uma legenda para um item em uma interface de usuário--> 
+                        <input type="text" name="address">  
+                    </div> <!--.field*2, cria dois div class field-->
+                    <div class="field">
+                        <label for="adress2">Número/Complemento</label>   
+                        <input type="text" name="address2">
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <div class="field">
+                        <label for="state">Estado</label>  
+                        <select name="uf">
+                            <option value="">Selecione o Estado</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="city">Cidade</label>   
+                        <select name="city" disabled>
+                            <option value="">Selecione a Cidade</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <button type="submit"> Cadastrar ponto de coleta </button>
+
+        </form>
+    </div>
+</body>
+
+</html>

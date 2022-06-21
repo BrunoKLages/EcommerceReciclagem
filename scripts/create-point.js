@@ -1,29 +1,29 @@
-function populateUFs() {
-    const ufSelect = document.querySelector("select[name=uf]")
+function populateUFs() {                                                                
+    const ufSelect = document.querySelector("select[name=uf]")                          // query selector seleciona baseado nos filtros passados como argumento
 
-    fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
-        .then(res => res.json())
-        .then(states => {
-            for (const state of states) {
-                ufSelect.innerHTML += `<option value="${state.id}"> ${state.nome} </option` //adiciona os estados como opção
+    fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")                // abre a url com todos os estados do Brasil (IBGE API UF)
+        .then(res => res.json())                                                        // depois, pega o resultado e transforma em json, por arrow function
+        .then(states => {                                                              
+            for (const state of states) {                                                       // então, percorre os states passados como argumentos
+                ufSelect.innerHTML += `<option value="${state.id}"> ${state.nome} </option`     // cria option no html para cada state encontrado
             }
         })
 
-}
-
-populateUFs()
+}                                                                                        // arrow function é uma função anonima, não importa o nome dela
+                                                                                        
+populateUFs()                                   
 
 function getCities(event) {
-    const citySelect = document.querySelector("select[name=city]")
-    const stateInput = document.querySelector("input[name=state]")
+    const citySelect = document.querySelector("select[name=city]")                  //seleciona campo onde cidades serão mostradas
+    const stateInput = document.querySelector("input[name=state]")                  //seleciona campo onde o estado foi selecionado
     
-    const ufValue = event.target.value
+    const ufValue = event.target.value                                              //pega id de qual estado foi selecionado
 
     stateInput.value = event.target.options[event.target.selectedIndex].text
 
     console.log(event.target)
 
-    const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`
+    const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios` // abre a url com todos os municipios da UF passada
 
     fetch(url)
         .then(res => res.json())
@@ -37,9 +37,8 @@ function getCities(event) {
 }
 
 document
-    .querySelector("select[name=uf]")
-    .addEventListener("change", getCities)
+    .querySelector("select[name=uf]")           //seleciona campo com UF para ouvir
+    .addEventListener("change", getCities)      //addEnvetListener (criterio de mudança, puxe as cidades se mudar )
 
-// arrow function é uma função anonima, não importa o nome dela
-//query selector seleciona baseado nos filtros passados como argumento
-//addEnvetListener (mudança, o que fazer)
+
+

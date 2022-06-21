@@ -1,4 +1,4 @@
-@media (max-width: 900px){          /*media querys*/
+@media (max-width: 900px){              /*media querys*/
     #page-home{
         background-position-x: 70vw;
     }
@@ -23,7 +23,7 @@
 
 @media (min-width: 1700px) {
     #page-home{
-        background-position-x: 40vw;
+        background-position-x: 40vw;    /*editar posicionmaneto de imagens*/
     }
 }
 

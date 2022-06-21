@@ -1,6 +1,6 @@
 #page-home{                                                         /*id é referenciado com "#" */
     height: 100vh; 
-    background: url('../assets/home-background.svg') no-repeat;    /*no-repeat = carrega a url somente uma vez*/
+    background: url('../assets/home-background.svg') no-repeat;     /*no-repeat = carrega a url somente uma vez*/
     background-position: 35vw bottom;                               /*coloca imagem no bottom da tela*/
 }
 
@@ -32,7 +32,7 @@
 
 #page-home main{
     max-width: 560px;
-    flex: 1;                    /* ocupa todo o espaço disponível da div*/
+    flex: 1;                        /* ocupa todo o espaço disponível da div*/
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,7 +44,7 @@
 
 #page-home main p{
     font-size: 24px;
-    line-height: 38px;          /*correspondente a altura da linha*/
+    line-height: 38px;              /*correspondente a altura da linha*/
     margin-top: 24px;
 }
 
@@ -53,7 +53,7 @@
     max-width: 360px;
     height: 72px;
     
-    border-radius: 8px;                /*arredondamento das bordas*/
+    border-radius: 8px;             /*arredondamento das bordas*/
     
     display: flex;
     align-items: center;
@@ -61,10 +61,10 @@
     margin-top: 40px;
     background: var(--primary-color);
 
-    transition: 400ms;
+    transition: 400ms;              /*tempo de transição de todos os atributos permitidos, ao att a tela por exemplo*/
 }
 
-#page-home main a:hover{                /* quando mouse estiver sobre */
+#page-home main a:hover{                    /* quando mouse estiver sobre */
     background-color: #2fb86e;
 }
 
@@ -72,17 +72,17 @@
     width: 72px;
     height: 72px;
 
-    border-top-left-radius: 8px;        /*arrendondar bordas da esquerda*/
+    border-top-left-radius: 8px;            /*arrendondar bordas da esquerda*/
     border-bottom-left-radius: 8px;
 
-    background-color: rgba(0,0,0,0.08);  /*a = transparencia*/
+    background-color: rgba(0,0,0,0.08);   /*a = transparencia*/
 
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#page-home main a span:after{           /*cria pseudoelemento do html, criado pelo css*/
+#page-home main a span:after{               /*cria e edita pseudoelemento do html, pelo css*/
     content: "";
     background-image: url('../assets/search.svg');
 

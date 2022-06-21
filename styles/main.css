@@ -3,27 +3,27 @@
     --primary-color: #34cb79;
 }
 
-*{                                      /*todos os elementos, seletores*/
-    margin: 0;                           /*zera margin e padding em todos as div's*/
+*{                                          /*todos os elementos, seletores*/
+    margin: 0;                              /*zera margin e padding em todos as div's*/
     padding: 0;
-    box-sizing: border-box;  /*garante o comportamento intuitivo da box*/
-}
+    box-sizing: border-box;                 /*garante o comportamento intuitivo da box, que a div tem o tamanho de suas dimensões,*/
+}                                           /*e não que seu tamanho será definido pelo que tem dentro*/
 
 html{
-    font-family: Roboto, sans-serif;    /*fonte para todo doc*/
+    font-family: Roboto, sans-serif;        /*fonte para todo doc*/
 }
 
 body{
     background: #888888;
-    -webkit-font-smoothing: antialiased;  /*efeito visual*/
+    -webkit-font-smoothing: antialiased;    /*efeito visual*/
 }
 
 a{
-    text-decoration: none;              /*tira todos os underlines automáticos de todos os links*/
+    text-decoration: none;                  /*tira todos os underlines automáticos de todos os links*/
 }
 
 h1,h2,h3,h4,h5,h6{
-    font-family: Ubuntu, sans-serif;       /*sobreescreve fonte padrão*/
+    font-family: Ubuntu, sans-serif;        /*sobreescreve fonte padrão*/
     color: var(--title-color);
 }
 

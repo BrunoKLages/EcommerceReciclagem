@@ -1,12 +1,16 @@
-<!DOCTYPE html>                 <!-- ! = atalho para esqueleto do html  | Doctype indica que arquivo é html-->
+<!DOCTYPE html> <!-- ! = atalho para esqueleto do html  | Doctype indica que arquivo é html-->
 <html lang="pt_br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--título no navegador-->
     <title>E-coleta</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">  <!--  fontes do google-->
+
+    <!--  fontes do google-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/home.css">
     <link rel="stylesheet" href="/styles/modal.css">
@@ -14,31 +18,39 @@
 </head>
 
 <body>
-    <div id="page-home">                    <!-- Facilita identificação da página, útil no css-->
+    <!--id facilita identificação da página, útil no css-->
+    <div id="page-home">
         <div class="content">
             <header>
                 <img src="/assets/logo.svg" alt="Logomarca">
-                <a href="/create-point.html">                           <!-- a = link clicável-->
-                    <span></span>                               <!-- span = container genérico em linha-->
+                <!-- a = link clicável-->
+                <a href="/create-point.html">
+                    <!-- span = container genérico em linha-->
+                    <span></span>
                     Cadastre um ponto de coleta
                 </a>
             </header>
 
-            <main>                                                     <!-- nome para parte principal da página-->
+            <main>
+                <!-- nome para parte principal da página-->
                 <h2> Seu marketplace de coleta de resíduos</h2>
                 <p> Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente</p>
-                <a href="#"><span></span><strong> Pesquisar pontos de coleta</strong></a>  <!-- strong = container de texto em negrito-->
+                <a href="#"><span></span><strong> Pesquisar pontos de coleta</strong></a>
+                <!-- strong = container de texto em negrito-->
             </main>
         </div>
     </div>
 
+    <!--semelhante a pop-up, sobrescreve a tela-->
     <div id="modal" class="hide">
         <div class="content">
             <div class="header">
                 <h1>Pontos de Coleta</h1>
+                <!--redireciona pra primeira página-->
                 <a href="#">Fechar</a>
             </div>
             <form action="/search-results.html">
+                <!-- label representa uma legenda para um item em uma interface-->
                 <label for="search">Cidade</label>
                 <div class="search field">
                     <input type="text" name="search" placeholder="Pesquise por cidade">

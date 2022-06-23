@@ -16,7 +16,8 @@
         position: absolute;
         bottom: 48px;
 
-        left: 50%;                      /* metodo para centralizar absolute*/
+        /* metodo para centralizar absolute*/
+        left: 50%;                      
         transform: translateX(-50%);
     }
 
@@ -31,7 +32,8 @@
 
 @media (min-width: 1700px) {
     #page-home{
-        background-position-x: 40vw;    /*editar posicionmaneto de imagens*/
+        /*editar posicionmaneto de imagens*/
+        background-position-x: 40vw;    
     }
 }
 

@@ -1,4 +1,5 @@
-body::after{
+/*bloco para visual*/
+body::after{                
     content: "";
     position: fixed;
     background: white;
@@ -6,6 +7,8 @@ body::after{
     left: 0;
     right: 0;
     bottom: 0;
+
+    /*eixo z -1, pra ficar atrás da página, porem na frente do background*/
     z-index: -1;
 }
 
@@ -46,7 +49,10 @@ body::after{
 }   
 
 #page-search-results main .cards{
+    /*grid permite organização em linhas e colunas*/
     display: grid;
+    
+    /*nesse caso, o espaço disponivel foi divido em 3 frações, uma para cada*/
     grid-template-columns: 1fr 1fr 1fr;
 
     gap: 24px;

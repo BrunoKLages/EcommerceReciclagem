@@ -37,7 +37,8 @@
     height: 20px;
 
     display: flex;
-    font-size: 0.01px;  /*acessibiliade*/
+    /*acessibiliade, fonte criada para existir "alt"*/
+    font-size: 0.01px;  
 }
 
 #modal .header h1{

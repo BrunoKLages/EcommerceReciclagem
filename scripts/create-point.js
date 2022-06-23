@@ -41,11 +41,12 @@ function getCities(event) {
 }
 
 document
-    .querySelector("select[name=uf]")           //seleciona campo com UF para ouvir
-    .addEventListener("change", getCities)      //addEnvetListener (criterio de mudança, puxe as cidades se mudar )
+    //seleciona campo com UF para ouvir
+    .querySelector("select[name=uf]")
+    //addEnvetListener (criterio de mudança, puxe as cidades se mudar )           
+    .addEventListener("change", getCities)      
 
 //itens de coleta
-
 const itemsToCollect = document.querySelectorAll(".items-grid li")
 
 for (const item of itemsToCollect) {
@@ -54,17 +55,21 @@ for (const item of itemsToCollect) {
 
 const collectedItems = document.querySelector("input[name=items]")
 
+//array para itens selecionados
 let selectedItems = []
 
 function handleSelectedItem(event) {
     const itemLi = event.target
 
+    //alterna o parametro
     itemLi.classList.toggle("selected")
 
     const itemId = itemLi.dataset.id
 
+    //procura index selecionados na array
     const alreadySelected = selectedItems.findIndex(item => item == itemId)  // ((item) => {return item == itemId})
 
+    //se apertado,
     if (alreadySelected >= 0) {
         const filteredItems = selectedItems.filter(item => item != itemId)
         selectedItems = filteredItems

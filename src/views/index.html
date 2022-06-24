@@ -1,53 +1,47 @@
-<!DOCTYPE html> <!-- ! = atalho para esqueleto do html  | Doctype indica que arquivo é html-->
-<html lang="pt_br">
+{# extensao do layout, herança #}
+{% extends "layout.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{# variavel #}
+{% set pageId = "page-home" %}
 
-    <!--título no navegador-->
-    <title>E-coleta</title>
-
-    <!--  fontes do google-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/main.css">
+{% block styles %}
     <link rel="stylesheet" href="/styles/home.css">
-    <link rel="stylesheet" href="/styles/modal.css">
-    <link rel="stylesheet" href="/styles/responsive.css">
-</head>
+        <link rel="stylesheet" href="/styles/modal.css">
+{% endblock styles %}
 
-<body>
-    <!--id facilita identificação da página, útil no css-->
-    <div id="page-home">
-        <div class="content">
-            <header>
-                <img src="/assets/logo.svg" alt="Logomarca">
+{% block content %} 
+    <div class="content">
+        <header>
+            <img src="/assets/logo.svg" alt="Logomarca">
                 <!-- a = link clicável-->
                 <a href="/create-point">
                     <!-- span = container genérico em linha-->
                     <span></span>
                     Cadastre um ponto de coleta
                 </a>
-            </header>
-
-            <main>
-                <!-- nome para parte principal da página-->
-                <h2> Seu marketplace de coleta de resíduos</h2>
-                
-                <!--mágica nunjucks, deixa html dinamico-->
-                <!-- <h2>{{ title }}</h2> -->
-                <p> Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente</p>
-                <a href="#"><span></span><strong> Pesquisar pontos de coleta</strong></a>
-                <!-- strong = container de texto em negrito-->
-            </main>
-        </div>
+        </header>
+        <main>
+            <!-- nome para parte principal da página-->
+            <h2>Seu marketplace de coleta de resíduos</h2>
+            <!--mágica nunjucks, deixa html dinamico-->
+            <!-- <h2>{{ title }}</h2> -->
+            <p>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente</p>
+            <a href="#"> 
+                <span></span> <strong>Pesquisar pontos de coleta</strong>
+            </a>
+            <!-- strong = container de texto em negrito-->
+        </main>
     </div>
-
-    <!--semelhante a pop-up, sobrescreve a tela-->
+{% endblock content %}
+        <!--id facilita identificação da página, útil no css-->
+        {# id="page-home"#}
+        
+        <!--semelhante a pop-up, sobrescreve a tela-->
+{% block modal %}
     {% include "partials/modal.html" %}
+{% endblock modal %}
 
-    <script src="/scripts/index.js"></script>
-</body>
+{% block scripts %}
+    <script src="/scripts/index.js"> </script>
+{% endblock scripts %}
 
-</html>

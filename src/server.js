@@ -8,10 +8,15 @@
 const express = require("express")
 const server = express()
 
-//configuração para permiter acesso a pasta publica no navegador
+//recebe bd
+const db = require("./database/db")
+
+//.use habilita configurações do server
+// configuração para permiter acesso a pasta publica no navegador
 server.use(express.static("public"))
 
-
+//permite utilização do body 
+server.use(express.urlencoded({extended: true}))
 
 //utilizando template engine
 const nunjucks = require("nunjucks")
@@ -34,12 +39,75 @@ server.get("/", (req,res)=>{
 
 //create-point congfigurado
 server.get("/create-point", (req,res)=>{
+    
+    //req query strings
+    // console.log(req.query)
+    
     //return evita bugs
     return res.render("create-point.html")
  })
 
+ server.post("/savepoint", (req, res) =>{
+    //req.body corpo da requisição
+    // console.log(req.body)
+    const query = `
+    INSERT INTO places (
+        image,
+        name, 
+        address, 
+        address2, 
+        state, 
+        city, 
+        items
+    ) VALUES (?,?,?,?,?,?,?)
+    `
+
+    const values = [
+        req.body.image,
+        req.body.name,
+        req.body.address,
+        req.body.address2,
+        req.body.state,
+        req.body.city,
+        req.body.items
+    ]
+    function afterInsertData(err){
+        if(err){
+            console.log(err)
+            return res.send("Erro no cadastro")
+        }
+        
+        console.log("Cadastrado com sucesso")
+        //this não permite arrow funcion
+        console.log(this)    
+        return res.render("create-point.html", { saved: true})
+    }
+
+    db.run(query, values, afterInsertData)
+    
+})
+
  server.get("/search", (req,res)=>{
-    return res.render("search-results.html")
+    
+    const search = req.query.search
+
+    if(search == ""){
+        return res.render("search-results.html", { total: 0 })
+    }
+
+    //Acha cidades com nome parecido, que contenha caracteres digitados
+    db.all(`SELECT * FROM places WHERE city LIKE '%${search}%'`, function(err, rows){
+        if(err){
+            return console.log(err)
+        }
+
+        const total = rows.length
+
+        console.log("Aqui estão os seus registros")
+        console.log(rows)
+        //mostrar pagina com dados do banco de dados
+        return res.render("search-results.html", { places:rows, total:total})
+    })    
  })
  
 

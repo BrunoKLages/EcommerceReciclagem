@@ -1,12 +1,18 @@
 /*bloco para visual*/
+
+body{
+    background-color: white;
+}
+
 body::after{                
     content: "";
-    position: fixed;
-    background: white;
-    top: 260px;
+    position: absolute;
+    background: #BBBBBB;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    height: 16rem;
 
     /*eixo z -1, pra ficar atrás da página, porem na frente do background*/
     z-index: -1;

@@ -45,9 +45,14 @@ server.get("/create-point", (req,res)=>{
     
     //return evita bugs
     return res.render("create-point.html")
- })
+})
 
- server.post("/savepoint", (req, res) =>{
+server.get("/contact", (req,res)=>{
+
+    return res.render("contact.html")
+})
+
+server.post("/savepoint", (req, res) =>{
     //req.body corpo da requisição
     // console.log(req.body)
     const query = `
@@ -87,7 +92,7 @@ server.get("/create-point", (req,res)=>{
     
 })
 
- server.get("/search", (req,res)=>{
+server.get("/search", (req,res)=>{
     
     const search = req.query.search
 
@@ -108,8 +113,52 @@ server.get("/create-point", (req,res)=>{
         //mostrar pagina com dados do banco de dados
         return res.render("search-results.html", { places:rows, total:total})
     })    
- })
- 
+})
+
+server.get("/sendemail", (req, res) =>{
+
+    const transporter = require("./services/smtp");
+    const hbs = require("nodemailer-express-handlebars")
+
+    try {
+
+        // configuração do transporter com o plugin
+        transporter.use("compile", hbs({
+            viewEngine: "express-handlebars",
+            viewPath: "./templates/"
+        }))
+
+        // criação do email
+        let mailOptions = {
+            from: "Bruno Lages <brunolages@cpejr.com.br>",
+            to: "Bruno Lages <brunola2002@gmail.com.br>",
+            subject: "Nodemailer",
+            text: `Olá, adm\n 
+                                        Passo a passo: \n 
+                                        1. Escolher sua turma\n 
+                                        2. Enviar email de confirmação de interesse\n
+                                        3. Pronto!`,
+            template: "welcome",
+            context: {
+                name: "teste"
+            }
+        }
+        // envio do email
+        transporter.sendMail(mailOptions, function (err, data) {
+            if (err) {
+                return res.status(500).send();
+                
+            } else {
+                return res.render("contact.html", { send : true})
+            }
+        })
+        console.log("Message sent: %s", info.messageId);
+
+    } catch (error) {
+        // tratamento de erros
+        return res.status(500).send();
+    }
+})
 
 //ligar o servidor
 server.listen(3000)

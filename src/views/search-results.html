@@ -1,50 +1,93 @@
 {% extends "layout.html" %}
-
 {% set pageId = "page-search-results" %}
-
 {% block title %}
     <title>Resultado da pesquisa</title>
 {% endblock title %}
-
 {% block styles %}
     <link rel="stylesheet" href="/styles/search-results.css">
-{% endblock styles %}
-
-{% block content %}
-    {% include "partials/page-header.html" %}
-    <main>
-
-        {% if total > 0 %}
-            <h4>
-                <strong>{{total}}</strong>
-                encontrados
-            </h4>
-
-            <div class="cards">
-
-                {% for place in places %}
-                    <div class="card">
-                        <img
-                            src="{{ place.image }}"
-                            alt="{{place.name}}">
-                        <h1>{{place.name}}</h1>
-                        <h3>{{place.items}}</h3>
-                        <p>
-                            {{place.city}}, {{place.state}} 
-                            <!--br = quebra de linha-->
-                            <br/>
-                            {{place.address}} 
-                            <br/> 
-                            {{place.address2}}
-                        </p>
+    {% endblock styles %}
+    {% block content %}
+        {% include "partials/page-header.html" %}
+        <main>
+            {% if total > 0 %}
+                <h4>
+                    <strong>{{ total }}</strong>
+                    encontrados
+                </h4>
+                <div class="cards">
+                    {% for place in places %}
+                        <div class="card">
+                            <img src="{{ place.image }}" alt="{{ place.name }}">
+                                <h1>{{ place.name }}</h1>
+                                <h3>{{ place.items }}</h3>
+                                <p>
+                                    {{ place.city }}, {{ place.state }}
+                                    <!--br = quebra de linha-->
+                                    <br/> {{ place.address }} <br/> {{ place.address2 }}
+                                </p>
+                            </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
-            </div>
-        {%else%}
-
-        <h4><strong>Nenhum</strong> local encontrado</h4>
-
-        {% endif %}
-
-    </main>
-{% endblock content %}
+                    <canvas id="myChart" width="400" height="200" style=""></canvas>
+                {% else %}
+                    <h4>
+                        <strong>Nenhum</strong>
+                        local encontrado</h4>
+                {% endif %}
+            </main>
+        {% endblock content %}
+        {% block scripts %}
+            <script>
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            'Lâmpadas',
+                            'Pilhas e Baterias',
+                            'Papéis e Papelão',
+                            'Resíduos Eletrônicos',
+                            'Resíduos Orgânicos',
+                            'Óleo de cozinha'
+                        ],
+                        datasets: [
+                            {
+                                label: '# of Votes',
+                                data: [
+                                    12,
+                                    19,
+                                    3,
+                                    5,
+                                    2,
+                                    3
+                                ],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        {% endblock scripts %}

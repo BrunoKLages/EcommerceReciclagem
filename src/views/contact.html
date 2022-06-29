@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% set pageId = "page-contact" %}
+
+{% block title %}
+    <title>Contato</title>
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/styles/contact.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+{% endblock styles %}
+
+{%block content%}
+    {% include "partials/page-header.html" %}
+
+    <form action="/sendemail">
+        <h1>Queremos ouvir sua opinião!</h1>
+        <!-- cointainer coleção de campos-->
+        <fieldset>
+            <!-- container legenda-->
+            <legend>
+                <h3>Envie uma dúvida ou reclamação</h3>
+            </legend>
+
+            <div class="field-group">
+                <!--digitar .field emmet cria pa nois-->
+                <div class="field">
+                    <label for="">Nome</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="field">
+                    <label for="">Email</label>
+                    <input type="email" name="email" placeholder="seuemail@dominio.com" required>
+                </div>
+            </div>
+
+            
+            <div class="field-group">
+                <div class="field">
+                    <label for="adress">Mensagem</label>
+                    {# famoso textao #}
+                    <textarea name="message" wrap="hard" id="" cols="2" rows="10"></textarea>
+                </div>
+            </div>
+        </fieldset>
+
+        <button type="submit">
+            Enviar
+        </button>
+    </form>
+{%endblock content%}
+
+{% block modal %}
+    {% if send %}
+        {%include "partials/point-created.html"%}
+    {% endif %}
+{% endblock modal %}
+
+
+{# {% block scripts %}
+    <script src="/controllers/send-email.js"></script>
+{% endblock scripts %} #}

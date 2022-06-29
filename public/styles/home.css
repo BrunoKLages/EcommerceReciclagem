@@ -95,3 +95,8 @@
     color: white;
     text-align: center;
 }
+
+#page-home header .contact{
+    display: flex;
+    column-gap: 30px;
+}

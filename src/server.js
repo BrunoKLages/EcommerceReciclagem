@@ -115,9 +115,13 @@ server.get("/search", (req,res)=>{
     })    
 })
 
+
+
 server.get("/sendemail", (req, res) =>{
 
+
     const transporter = require("./services/smtp");
+    console.log(transporter)
     const hbs = require("nodemailer-express-handlebars")
 
     try {
@@ -125,13 +129,13 @@ server.get("/sendemail", (req, res) =>{
         // configuração do transporter com o plugin
         transporter.use("compile", hbs({
             viewEngine: "express-handlebars",
-            viewPath: "./templates/"
+            viewPath: "./src"
         }))
 
         // criação do email
         let mailOptions = {
-            from: "Bruno Lages <brunolages@cpejr.com.br>",
-            to: "Bruno Lages <brunola2002@gmail.com.br>",
+            from: "Bruno Lages <brunocpejr@gmail.com>",
+            to: "Bruno Lages <brunolages@cpejr.com.br>",
             subject: "Nodemailer",
             text: `Olá, adm\n 
                                         Passo a passo: \n 
@@ -146,13 +150,13 @@ server.get("/sendemail", (req, res) =>{
         // envio do email
         transporter.sendMail(mailOptions, function (err, data) {
             if (err) {
+                console.log(err)
                 return res.status(500).send();
                 
             } else {
                 return res.render("contact.html", { send : true})
             }
         })
-        console.log("Message sent: %s", info.messageId);
 
     } catch (error) {
         // tratamento de erros

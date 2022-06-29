@@ -14,7 +14,7 @@
 {%block content%}
     {% include "partials/page-header.html" %}
 
-    <form action="/sendemail">
+    <form action="/sendemail" method="POST">
         <h1>Queremos ouvir sua opinião!</h1>
         <!-- cointainer coleção de campos-->
         <fieldset>
@@ -53,7 +53,7 @@
 
 {% block modal %}
     {% if send %}
-        {%include "partials/point-created.html"%}
+        {%include "partials/email-sent.html"%}
     {% endif %}
 {% endblock modal %}
 

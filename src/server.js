@@ -117,35 +117,31 @@ server.get("/search", (req,res)=>{
 
 
 
-server.get("/sendemail", (req, res) =>{
+server.post("/sendemail", (req, res) =>{
 
 
     const transporter = require("./services/smtp");
-    console.log(transporter)
-    const hbs = require("nodemailer-express-handlebars")
+    // console.log(transporter)
 
     try {
 
         // configuração do transporter com o plugin
-        transporter.use("compile", hbs({
-            viewEngine: "express-handlebars",
-            viewPath: "./src"
-        }))
-
+        // transporter.use("compile", hbs({
+        //     viewEngine: "express-handlebars",
+        //     viewPath: "./src"
+        // }))
+        console.log(req.body)
         // criação do email
         let mailOptions = {
             from: "Bruno Lages <brunocpejr@gmail.com>",
             to: "Bruno Lages <brunolages@cpejr.com.br>",
             subject: "Nodemailer",
-            text: `Olá, adm\n 
-                                        Passo a passo: \n 
-                                        1. Escolher sua turma\n 
-                                        2. Enviar email de confirmação de interesse\n
-                                        3. Pronto!`,
-            template: "welcome",
-            context: {
-                name: "teste"
-            }
+            text:`
+            nome ${req.body.name}
+            email ${req.body.email}
+            texto:${req.body.message}
+            `,
+            // template: "welcome",
         }
         // envio do email
         transporter.sendMail(mailOptions, function (err, data) {
@@ -163,6 +159,7 @@ server.get("/sendemail", (req, res) =>{
         return res.status(500).send();
     }
 })
+
 
 //ligar o servidor
 server.listen(3000)

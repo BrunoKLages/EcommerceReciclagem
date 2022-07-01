@@ -26,68 +26,75 @@
                                     <br/> {{ place.address }} <br/> {{ place.address2 }}
                                 </p>
                             </div>
-                    {% endfor %}
-                </div>
-                    <canvas id="myChart" width="400" height="200" style=""></canvas>
-            {% else %}
+                        {% endfor %}
+                    </div>
+                    <canvas id="myChart" width="800" height="500" style=""></canvas>
+                {% else %}
                     <h4>
                         <strong>Nenhum</strong>
                         local encontrado</h4>
-            {% endif %}
-        </main>
-    {% endblock content %}
-    {% block scripts %}
-        <script>
-            const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: [
-                        'Lâmpadas',
-                        'Pilhas e Baterias',
-                        'Papéis e Papelão',
-                        'Resíduos Eletrônicos',
-                        'Resíduos Orgânicos',
-                        'Óleo de cozinha'
-                    ],
-                    datasets: [
-                        {
-                            label: '# of Votes',
-                            data: [
-                                12,
-                                19,
-                                3,
-                                5,
-                                2,
-                                3
-                            ],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
+                {% endif %}
+            </main>
+        {% endblock content %}
+        {% block scripts %}
+            <script>
+                let items
+                let labels = []
+                let data = []
+                {% for place in places %}
+                    items = "{{place.items}}"
+                    items = items.split(",")
+
+                    //loop para percorrer item a item
+                    for (let i = 0; items[i] != null; i++){
+                        //se item nao estiver na lista, adiciona tipo de material
+                        if(labels.indexOf(items[i]) < 0){
+                            data[(labels.push(items[i]))-1] = 1
                         }
-                    ]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
+                        //se item já esta na lista, soma em 1 a quantidade de pontos com este material
+                        else{
+                           data[labels.indexOf(items[i])] += 1
                         }
                     }
-                }
-            });
-        </script>
-    {% endblock scripts %}
+                {% endfor %}
+
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: '# of Votes',
+                                data: data,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        {% endblock scripts %}

@@ -109,7 +109,7 @@ server.get("/search", (req,res)=>{
         const total = rows.length
 
         console.log("Aqui estão os seus registros")
-        console.log(rows)
+        // console.log(rows)
         //mostrar pagina com dados do banco de dados
         return res.render("search-results.html", { places:rows, total:total})
     })    

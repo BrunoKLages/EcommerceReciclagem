@@ -13,13 +13,14 @@
         margin: 0 auto;
     }
 
-    #page-home header a{
+    #page-home header .contact{
         position: absolute;
         bottom: 48px;
 
         /* metodo para centralizar absolute*/
-        left: 50%;                      
-        transform: translateX(-50%);
+        left: 10%;  
+        right:10%                    
+        /* transform: translateX(-30%); */
     }
 
     #page-search-results main .cards{

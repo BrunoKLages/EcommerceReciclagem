@@ -30,6 +30,7 @@
                     </div>
                     
                     <canvas id="myChart" width="800" height="500" style=""></canvas>
+                    <button onclick="downloadPDF()">Salvar como PDF</button>
                 {% else %}
                     <h4>
                         <strong>Nenhum</strong>
@@ -97,5 +98,18 @@
                         }
                     }
                 });
+
+                function downloadPDF(){
+                    const canvas = document.getElementById('myChart');
+                    //criar imagem
+                    const canvasImage = canvas.toDataURL('image.jpeg', 1.0);
+                    console.log(canvasImage)
+                    //
+
+                    let pdf = new jsPDF('landscape');
+                    pdf.setFontSize(20);
+                    pdf.addImage(canvasImage, 'JPEG', 15, 15, 240, 150);
+                    pdf.save('myChart.pdf')
+                }
             </script>
         {% endblock scripts %}
